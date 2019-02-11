@@ -1,0 +1,52 @@
+$button-color = #5682a3;
+$border-color = #b5b5b5;
+$text-input-color = #000;
+$border-radius = 20px;
+$disabled-color = #dadada;
+
+.fill-height
+    min-height: 100vh !important;
+    overflow: hidden;
+
+input
+    padding-left: 35px;
+    padding-right: 40px;
+    border-color: $border-color;
+    border-radius: $border-radius;
+    color: $text-input-color !important;
+
+    &::placeholder
+        color: $border-color !important;
+
+    &:focus
+        color: #495057;
+        background-color: #fff;
+        border-color: #5682a3;
+        box-shadow: none;
+
+button
+    background-color: $button-color;
+    border: none;
+    border-radius: $border-radius
+
+    &:focus, &:active, &:hover
+        box-shadow: none !important;
+        background-color: #5682a3;
+
+    &:disabled    
+        background-color: $disabled-color;
+
+.reg-button a
+    color: $button-color;
+
+.show-pass
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    color: $border-color;
+
+.input-icon
+    position: absolute;
+    left: 30px;
+    top: 11px;
+    color: $border-color;

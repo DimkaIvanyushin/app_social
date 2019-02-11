@@ -1,0 +1,30 @@
+.container.d-flex.flex-column.align-items-center.justify-content-center.fill-height
+    .row.w-100.m-2
+        .col-12
+            i.fa.input-icon.fa-user-o
+            input.form-control(
+                type="text"
+                '[attr.disabled]'="_loading ? '' : null"
+                placeholder="User name" 
+                required)
+    .row.w-100.m-2
+        .col-12
+            i.fa.input-icon.fa-lock
+            input.form-control(
+                '[attr.type]'="_shown ? 'text' : 'password'" 
+                '[attr.disabled]'="_loading ? '' : null"
+                placeholder="Password" 
+                required )
+            i.show-pass.fa((click)="showPassword()" '[class.fa-eye]'="!_shown" '[class.fa-eye-slash]'="_shown")
+    .row.w-100.m-2
+        .col-12
+            button.btn.btn-primary.btn-block(
+                type="button"
+                '[attr.disabled]'="_validation ? '' : null"
+                '(click)'="login()")
+                span(#sign *ngIf="!_loading" ) Sign-in
+                i.fa.fa-spinner.fa-pulse(*ngIf="_loading")
+    .row.w-100.m-2
+        .col-12.reg-button.text-center
+            span Don't have an account? 
+            a(routerLink="/sign-up") Sign Up

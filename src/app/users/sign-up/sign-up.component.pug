@@ -1,0 +1,27 @@
+.container.d-flex.flex-column.align-items-center.justify-content-center.fill-height
+    .row.w-100.m-2
+        .col-12
+            i.fa.input-icon.fa-user-o
+            input.form-control(type="text" placeholder="User name" required)
+    .row.w-100.m-2
+        .col-12
+            i.fa.input-icon.fa-envelope-o
+            input.form-control(type="email" placeholder="Email" required)
+    .row.w-100.m-2
+        .col-12
+            i.fa.input-icon.fa-lock
+            input.form-control(type="password" placeholder="Password" required )
+    .row.w-100.m-2
+        .col-12
+            button.btn.btn-primary.btn-block(
+                type="button"
+                '[attr.disabled]'="_validation ? '' : null"
+                '(click)'="login()")
+                span(#sign *ngIf="!_loading" ) Registration
+                i.fa.fa-spinner.fa-pulse(*ngIf="_loading")
+
+    .row.w-100.m-2
+        .col-12.reg-button.text-center
+            a(routerLink="/sign-in") 
+                i.fa.fa-angle-left.pr-2
+                span back
