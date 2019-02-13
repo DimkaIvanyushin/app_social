@@ -35,11 +35,10 @@
                 '(click)'="authService(authService.signUp(userEmail, userPassword))")
                 span(*ngIf="!authService.auth" ) Sign up
                 i.fa.fa-spinner.fa-pulse(*ngIf="authService.auth")
-    .row.w-100.m-2
+    .row.w-100.m-2(*ngIf="authService.error")
         .col-12.text-center
-            span.text-error(*ngIf="authService.error") {{ authService.error }}
+            span.text-error {{ authService.error }}
     .row.w-100.m-2
         .col-12.reg-button.text-center
             a(routerLink="/sign-in") 
-                i.fa.fa-angle-left.pr-2
                 span back
