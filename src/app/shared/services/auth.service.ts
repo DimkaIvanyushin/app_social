@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "../models/user";
+import { Error } from "../models/error";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -11,6 +12,8 @@ import { Router } from "@angular/router";
 export class AuthService {
 
   userData: any;
+  auth: boolean = false;
+  public error: Error;
 
   constructor(
     public afs: AngularFirestore,
@@ -31,30 +34,37 @@ export class AuthService {
   }
 
   signIn(email, password) {
+    this.auth = true;
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          this.auth = false;
           this.router.navigate(['profile']);
         });
         this.setUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        this.auth = false;
+        this.error = error;
       })
   }
 
   signUp(email, password) {
+    this.auth = true;
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         //this.sendVerificationMail();
         this.setUserData(result.user);
+        this.auth = false;
+        this.router.navigate(['profile']);
       }).catch((error) => {
-        window.alert(error.message)
+        this.auth = false;
+        this.error = error;
       })
   }
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   googleAuth() {

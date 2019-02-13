@@ -10,7 +10,6 @@ export class SignInComponent implements OnInit {
 
   private _shown = false;
   private _loading = false;
-  private _validation = true;
 
   constructor(
     public authService: AuthService
@@ -20,8 +19,8 @@ export class SignInComponent implements OnInit {
     this._shown = !this._shown;
   }
 
-  login() {
-    this._loading = !this._loading;
+  signIn(login: string, password: string) {
+    this.authService.signIn(login, password);
   }
 
   ngOnInit() {

@@ -1,30 +1,46 @@
 .container.d-flex.flex-column.align-items-center.justify-content-center.fill-height
     .row.w-100.m-2
         .col-12
-            i.fa.input-icon.fa-user-o
+            i.fa.input-icon.fa-envelope-o
             input.form-control(
                 type="text"
+                '[class.border-error]' = "authService.error"
                 '[attr.disabled]'="_loading ? '' : null"
-                placeholder="User name" 
+                '[(ngModel)]'="login"
+                '(click)'="authService.error = null"
+                placeholder="Email"
                 required)
     .row.w-100.m-2
         .col-12
             i.fa.input-icon.fa-lock
             input.form-control(
+                '[class.border-error]' = "authService.error"
                 '[attr.type]'="_shown ? 'text' : 'password'" 
                 '[attr.disabled]'="_loading ? '' : null"
+                '[(ngModel)]'="password"
+                '(click)'="authService.error = null"
                 placeholder="Password" 
                 required )
-            i.show-pass.fa((click)="showPassword()" '[class.fa-eye]'="!_shown" '[class.fa-eye-slash]'="_shown")
+            i.show-pass.fa(
+                (click)="showPassword()" 
+                '[class.fa-eye]'="!_shown" 
+                '[class.fa-eye-slash]'="_shown")
     .row.w-100.m-2
         .col-12
             button.btn.btn-primary.btn-block(
                 type="button"
-                '[attr.disabled]'="_validation ? '' : null"
-                '(click)'="login()")
-                span(#sign *ngIf="!_loading" ) Sign-in
-                i.fa.fa-spinner.fa-pulse(*ngIf="_loading")
+                '[attr.disabled]'="!login || !password ? '' : null"
+                '(click)'="signIn(login, password)")
+                span(#sign *ngIf="!authService.auth" ) Sign in
+                i.fa.fa-spinner.fa-pulse(*ngIf="authService.auth")
     .row.w-100.m-2
+        .col-12.text-center
+            span.text-error(*ngIf="authService.error") {{ authService.error }}
+    .row.w-100
         .col-12.reg-button.text-center
             span Don't have an account? 
             a(routerLink="/sign-up") Sign Up
+    .row.w-100.m-2
+        .col-12.d-flex.justify-content-center
+            span('(click)'="authService.googleAuth()") Log in with Google 
+                i.fa.fa-google-plus.text-danger 
