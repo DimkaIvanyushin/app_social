@@ -11,25 +11,18 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './users/profile/profile.component';
-import { SignInComponent } from './users/sign-in/sign-in.component';
-import { SignUpComponent } from './users/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { AuthService } from "./shared/services/auth.service";
-import { AddPostComponent } from './posts/add-post/add-post.component';
-import { EditPostComponent } from './posts/edit-post/edit-post.component';
-import { PostListComponent } from './posts/post-list/post-list.component';
-
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
     SignInComponent,
     SignUpComponent,
-    AddPostComponent,
-    EditPostComponent,
-    PostListComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

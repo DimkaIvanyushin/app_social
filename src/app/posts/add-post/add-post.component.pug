@@ -1,7 +1,0 @@
-h2 add post!
-
-form('[formGroup]'="postForm" '(ngSubmit)'="submitPostData()" novalidate)
-    input.form-control(type="text" formControlName="body" required)
-    input(type="text" formControlName="photoUrl" class="form-control" required)
-
-    button.btn.btn-success(type="submit" '[disabled]'="!postForm.valid") Add Post
