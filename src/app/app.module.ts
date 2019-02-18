@@ -16,13 +16,23 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { AuthService } from "./shared/services/auth.service";
 import { ProfileComponent } from './components/profile/profile.component';
+import { ConfigComponent } from './components/profile/config/config.component';
+import { SearchComponent } from './components/profile/search/search.component';
+import { PostsComponent } from './components/profile/posts/posts.component';
+import { MessagesComponent } from './components/profile/messages/messages.component';
+import { CreateComponent } from './components/profile/create/create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    ConfigComponent,
+    SearchComponent,
+    PostsComponent,
+    MessagesComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

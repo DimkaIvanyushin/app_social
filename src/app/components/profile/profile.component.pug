@@ -1,1 +1,25 @@
-h3 profile
+.content.d-flex.align-items-end.flex-column
+    .container.content
+        .row
+            .col-12
+                router-outlet
+    .container.menu.mt-auto
+        .row
+            .col-12
+                .menu
+                    ul
+                        li
+                            a(routerLink="/profile/config" routerLinkActive="active") 
+                                i.fa.fa-user-o
+                        li
+                            a(routerLink="/profile/search" routerLinkActive="active") 
+                                i.fa.fa-search
+                        li
+                            a(routerLink="/profile/posts" routerLinkActive="active") 
+                                i.fa.fa-picture-o
+                        li
+                            a(routerLink="/profile/messages" routerLinkActive="active") 
+                                i.fa.fa-comment-o
+                        li
+                            a(routerLink="/profile/create" routerLinkActive="active") 
+                                i.fa.fa-plus-square-o
